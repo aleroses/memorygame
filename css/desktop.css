@@ -1,0 +1,25 @@
+.main-container {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+    grid-template-rows: 0.8fr 4fr;
+    justify-content: center;
+    width: 95vw;
+    max-width: 680px;
+    height: 80vh;
+}
+header{
+    justify-self: flex-start;
+    align-self: center;
+    grid-column: 1 / 3;
+    padding-left: 12%;
+}
+
+.cards-section{
+    height: 95%;
+    justify-content: flex-start;
+}
+
+.side-container {
+    align-self: center;
+    border-radius: 8px;
+}
