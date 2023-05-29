@@ -46,7 +46,13 @@ header{
     background-color: rgba(255, 255, 255, 0.2);
 }
 .card{
+    font-size: 40px;
+    font-weight: bold;
+}
+.card:hover{
     background-color: white;
+    cursor: pointer;
+    border: 1px solid black;
 }
 .side-container{
     display: grid;
@@ -57,8 +63,7 @@ header{
     margin: 0 auto;
     align-items: center;
     padding: 5px 5px 5px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-radius: 8px;
     background-color: rgba(255, 255, 255,0.2);
 }
 .statistics{
