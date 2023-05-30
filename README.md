@@ -88,3 +88,16 @@ Por ejemplo, si tienes un botón dentro de un elemento `<div>` y has agregado un
 Puedes utilizar event.target para obtener información sobre el elemento que desencadenó el evento y realizar acciones específicas en función de ese elemento.
 
 En el ejemplo que proporcionaste, event.target se utiliza para comprobar si el elemento que desencadenó el evento click es un botón. Si el elemento es un botón, se utiliza event.target.parentNode para acceder al elemento padre del botón, es decir, el elemento que contiene el botón.
+
+## .disabled
+
+En JavaScript, la propiedad disabled se utiliza para deshabilitar o inhabilitar un elemento HTML. Cuando se establece en true, el elemento se desactiva y no se puede interactuar con él.
+
+En el ejemplo que proporcionas, si se establece card_one.disabled = true; para una variable card_one que contiene un elemento HTML, entonces el elemento HTML asociado se desactivará y no se podrá interactuar con él.
+
+Por ejemplo, si tienes un botón HTML y lo asignas a una variable boton, puedes deshabilitar el botón utilizando la propiedad disabled de la siguiente manera:
+
+```js
+let boton = document.querySelector('#mi-boton');
+boton.disabled = true;
+```
