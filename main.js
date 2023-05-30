@@ -9,6 +9,9 @@ let cards = document.getElementById('cards');
 let card;
 let index;
 
+let uncovered_cards = 0;
+
+
 cards.addEventListener('click', find_index);
 
 function find_index(event){
@@ -17,7 +20,12 @@ function find_index(event){
         index = Array.prototype.indexOf.call(card, event.target.parentNode);
 
         console.log(index);
+        return index;
     }
+}
+
+function uncovered_card(index){
+
 }
 
 /* let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8]
