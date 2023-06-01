@@ -93,8 +93,6 @@ En el ejemplo que proporcionaste, event.target se utiliza para comprobar si el e
 
 En JavaScript, la propiedad disabled se utiliza para deshabilitar o inhabilitar un elemento HTML. Cuando se establece en true, el elemento se desactiva y no se puede interactuar con él.
 
-En el ejemplo que proporcionas, si se establece card_one.disabled = true; para una variable card_one que contiene un elemento HTML, entonces el elemento HTML asociado se desactivará y no se podrá interactuar con él.
-
 Por ejemplo, si tienes un botón HTML y lo asignas a una variable boton, puedes deshabilitar el botón utilizando la propiedad disabled de la siguiente manera:
 
 ```js
