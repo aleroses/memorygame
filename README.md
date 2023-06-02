@@ -99,3 +99,95 @@ Por ejemplo, si tienes un botón HTML y lo asignas a una variable boton, puedes 
 let boton = document.querySelector('#mi-boton');
 boton.disabled = true;
 ```
+
+## setTimeout
+
+`setTimeout` es una función en JavaScript que permite retrasar la ejecución de una función o código en un número determinado de milisegundos. Su sintaxis es la siguiente:
+
+```js
+setTimeout(función, tiempo);
+```
+
+Donde `función` es la función que se ejecutará después de que transcurra el tiempo especificado en `tiempo`. `tiempo` es la cantidad de milisegundos que se esperarán antes de que se ejecute la función.
+
+Por ejemplo, si queremos ejecutar una función llamada `saludar` después de 3 segundos, podríamos hacerlo de la siguiente manera:
+
+```js
+function saludar() {
+  console.log("Hola!");
+}
+
+setTimeout(saludar, 3000); // Ejecuta la función 'saludar' después de 3 segundos (3000 milisegundos)
+```
+
+En este ejemplo, la función `saludar` se ejecutará después de que hayan transcurrido 3 segundos (3000 milisegundos) desde que se llamó a `setTimeout`.
+
+También es posible pasar argumentos adicionales a la función que se va a ejecutar, simplemente incluyéndolos después de los primeros dos parámetros:
+
+```js
+function saludar(nombre) {
+  console.log(`Hola ${nombre}!`);
+}
+
+setTimeout(saludar, 3000, "Juan"); // Ejecuta la función 'saludar' después de 3 segundos, pasando el argumento "Juan"
+```
+
+En este ejemplo, la función `saludar` recibirá el argumento `"Juan"` cuando se ejecute después de que hayan transcurrido 3 segundos.
+
+Es importante tener en cuenta que `setTimeout` devuelve un valor entero que identifica el temporizador creado. Este valor puede ser utilizado para cancelar el temporizador antes de que se ejecute la función, utilizando la función `clearTimeout`:
+
+```js
+let temporizador = setTimeout(saludar, 3000);
+
+// Cancela el temporizador antes de que se ejecute la función
+clearTimeout(temporizador);
+```
+
+En resumen, `setTimeout` es una función muy útil en JavaScript que permite retrasar la ejecución de una función o código durante un período de tiempo específico.
+
+## setInterval()
+
+`setInterval` es una función en JavaScript que permite ejecutar una función o código repetidamente después de un intervalo de tiempo especificado. Su sintaxis es la siguiente:
+
+```js
+setInterval(función, tiempo);
+```
+
+Donde `función` es la función que se ejecutará cada vez que transcurra el tiempo especificado en `tiempo`. `tiempo` es la cantidad de milisegundos entre cada ejecución de la función.
+
+Por ejemplo, si queremos ejecutar una función llamada `actualizarDatos` cada 5 segundos, podríamos hacerlo de la siguiente manera:
+
+```js
+function actualizarDatos() {
+  console.log("Actualizando datos...");
+}
+
+setInterval(actualizarDatos, 5000); // Ejecuta la función 'actualizarDatos' cada 5 segundos (5000 milisegundos)
+```
+
+En este ejemplo, la función `actualizarDatos` se ejecutará cada 5 segundos (5000 milisegundos) después de que se llamó a `setInterval`.
+
+También es posible pasar argumentos adicionales a la función que se va a ejecutar, simplemente incluyéndolos después de los primeros dos parámetros:
+
+```js
+function actualizarDatos(datos) {
+  console.log(`Actualizando datos: ${datos}`);
+}
+
+setInterval(actualizarDatos, 5000, "datos importantes"); // Ejecuta la función 'actualizarDatos' cada 5 segundos, pasando el argumento "datos importantes"
+```
+
+En este ejemplo, la función `actualizarDatos` recibirá el argumento `"datos importantes"` cada vez que se ejecute cada 5 segundos.
+
+Es importante tener en cuenta que `setInterval` devuelve un valor entero que identifica el temporizador creado. Este valor puede ser utilizado para detener el temporizador en cualquier momento, utilizando la función `clearInterval`:
+
+```js
+let temporizador = setInterval(actualizarDatos, 5000);
+
+// Detiene el temporizador después de 30 segundos
+setTimeout(() => {
+  clearInterval(temporizador);
+}, 30000);
+```
+
+En resumen, `setInterval` es una función muy útil en JavaScript que permite ejecutar una función o código repetidamente después de un intervalo de tiempo especificado.
