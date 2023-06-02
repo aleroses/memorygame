@@ -145,6 +145,14 @@ clearTimeout(temporizador);
 
 En resumen, `setTimeout` es una función muy útil en JavaScript que permite retrasar la ejecución de una función o código durante un período de tiempo específico.
 
+## card_two.innerText = ' '
+
+La línea de código `card_two.innerText = ' ';` en JavaScript se utiliza para establecer el contenido de texto del elemento HTML con el identificador `card_two` en una cadena vacía. Esto significa que cualquier contenido de texto que anteriormente estuviera dentro de ese elemento HTML será eliminado y reemplazado por una cadena vacía.
+
+Este código puede ser útil si deseas borrar el contenido de un elemento HTML específico, como una etiqueta `<div>` o un `<p>`, antes de agregar nuevo contenido dinámicamente con JavaScript. Por ejemplo, si tienes una página web que muestra información actualizada en tiempo real, puedes usar esta línea de código para borrar el contenido anterior antes de agregar el nuevo contenido.
+
+Es importante tener en cuenta que esta línea de código solo afectará el contenido de texto dentro del elemento HTML, no afectará a ningún elemento hijo o cualquier otro atributo del elemento HTML. Además, si el elemento HTML no existe en la página web o si el identificador no es correcto, se producirá un error en la consola de JavaScript.
+
 ## setInterval()
 
 `setInterval` es una función en JavaScript que permite ejecutar una función o código repetidamente después de un intervalo de tiempo especificado. Su sintaxis es la siguiente:

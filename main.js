@@ -16,11 +16,12 @@ let p_successful_attempts = document.getElementById('successful-attempts');
 
 let card;
 let index;
-let card_counter = 0;
 let card_one;
 let card_two;
 let first_result;
 let second_result;
+
+let card_counter = 0;
 let movements = 0;
 let successful_attempts = 0;
 
@@ -33,18 +34,16 @@ cards.addEventListener('click', find_index);
 function find_index(event){
     if(event.target.tagName == 'BUTTON'){
         card = document.getElementsByTagName('div');
-        index = Array.prototype.indexOf.call(card, event.target.parentNode);
-        console.log(index);
+        index = Array.prototype.indexOf.call(card, event.target.parentNode)
     }
-    show_card(index)
+    show_card(index);
 }
 
 function show_card(index){
     card_counter++;
-
     if(card_counter == 1){
         card_one = document.getElementById(index);
-        first_result = random[index];
+        first_result = random[index]
         
         card_one.innerText = first_result;
         card_one.disabled = true;
@@ -57,26 +56,30 @@ function show_card(index){
 
         movements++;
         p_movements.innerText = `Movements: ${movements}`;
+
         if(first_result == second_result){
             card_counter = 0;
 
             successful_attempts++;
-            p_successful_attempts.innerText = `Successful attempts: ${successful_attempts}`
+            p_successful_attempts.innerText = `Successful attempts: ${successful_attempts}`;
+
+            if(successful_attempts == 8){
+                p_successful_attempts.innerText = `Successful attempts: ${successful_attempts} 😱`;
+                p_movements.innerText = `Movements: ${movements} 😎`;
+            }
         }else{
             setTimeout(() => {
+                card_counter = 0;
+
                 card_one.innerText = ' ';
                 card_two.innerText = ' ';
-                card_one.disabled = false
+                card_one.disabled = false;
                 card_two.disabled = false;
-
-                card_counter = 0;
-                
-            }, 800)
+            }, 800);
         }
     }
+    console.log(card_counter);
 }
-
-
 
 
 
