@@ -19,12 +19,12 @@ body{
     display: grid;
     width: 90vw;
     max-width: 400px;
-    height: 80vh;
+    height: 85vh;
 
     grid-template-columns: 1fr;
-    grid-template-rows: 0.8fr 4fr 2fr;
+    grid-template-rows: 0.8fr 4fr 2.4fr;
     margin: 0 auto;
-    margin-top: 8vh;
+    margin-top: 5vh;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 8px;
@@ -61,8 +61,8 @@ div{
 }
 .side-container{
     display: grid;
-    width: 70vw;
-    height: 22vh;
+    width: 76vw;
+    height: 25vh;
     max-width: 260px;
     font-size: var(--lg);
     margin: 0 auto;

@@ -7,12 +7,13 @@
 // 5. Detectar la cantidad de moviemientos realizados por el jugador y mostrarlo en el pantalla 
 // 6. Verificar si la primera tarjeta es igual a la segunda  e incrementar los aciertos (intentos exitosos) en pantalla, además de volver a cero el contador de tarjetas
 // 7. De no ser iguales ocultar tarjetas con setTimeout y decirle que las dos tarjetas esten en disabled = false, además debemos volver el contador en cero. 
-// 8. Verificar si los aciertos son igual a 8
+// 8. Verificar si los aciertos son igual a 8 y mostrar el tiempo usado
 // 9. Agregar temporizador de 30 segundos y al perder mostrar todas los numeros de las tarjetas
 
 let cards = document.getElementById('cards');
 let p_movements = document.getElementById('movements');
 let p_successful_attempts = document.getElementById('successful-attempts');
+let p_time_left = document.getElementById('time-left') ;
 
 let card;
 let index;
@@ -20,10 +21,15 @@ let card_one;
 let card_two;
 let first_result;
 let second_result;
+let time_controller;
+let block_card;
 
 let card_counter = 0;
 let movements = 0;
 let successful_attempts = 0;
+let time = 30;
+let timer = false;
+let initial_time = 30;
 
 let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
 let random = numbers.toSorted(() => Math.random() - 0.5);
@@ -40,6 +46,11 @@ function find_index(event){
 }
 
 function show_card(index){
+    if(timer == false){
+        measure_time();
+        timer = true;
+    }
+
     card_counter++;
     if(card_counter == 1){
         card_one = document.getElementById(index);
@@ -64,7 +75,9 @@ function show_card(index){
             p_successful_attempts.innerText = `Successful attempts: ${successful_attempts}`;
 
             if(successful_attempts == 8){
+                clearInterval(time_controller);
                 p_successful_attempts.innerText = `Successful attempts: ${successful_attempts} 😱`;
+                p_time_left.innerText = `Great, you only took ${initial_time - time} seconds 😄`
                 p_movements.innerText = `Movements: ${movements} 😎`;
             }
         }else{
@@ -81,10 +94,28 @@ function show_card(index){
     console.log(card_counter);
 }
 
+function measure_time(){ // Medir el tiempo
+    time_controller = setInterval(() => {
+        time--;
+        p_time_left.innerText = `Time: ${time} seconds`
 
+        if(time == 0){
+            clearInterval(time_controller);
+            show_and_lock_card();
+        }
+    }, 1000);
+}
 
+function show_and_lock_card(){ // Muestra y bloquea tarjetas
+    for(let i=0; i<=15; i++){
+        block_card = document.getElementById(i);
+        block_card.innerText = random[i];
+        block_card.disabled = true;
+    }
+}
 
-/* let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+/* 
+let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
 let random = numbers.sort(() => Math.random() - 0.5);
 console.log(random);
 
@@ -196,4 +227,5 @@ function uncovered(index){
             }, 800)
         }
     }
-} */
+} 
+*/
