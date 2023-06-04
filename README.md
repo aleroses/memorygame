@@ -199,3 +199,125 @@ setTimeout(() => {
 ```
 
 En resumen, `setInterval` es una función muy útil en JavaScript que permite ejecutar una función o código repetidamente después de un intervalo de tiempo especificado.
+
+## class="visible"
+
+```html
+<button id="restart-button" class="visible">Play again</button>
+```
+
+## .classList
+
+La propiedad `.classList` en JavaScript es una propiedad que está disponible en los elementos del DOM y permite acceder y manipular las clases CSS de un elemento de forma programática.
+
+La propiedad `.classList` es un objeto que tiene varios métodos que permiten agregar, eliminar, verificar y alternar clases CSS en un elemento sin tener que manipular directamente la propiedad `className` del elemento.
+
+A continuación te muestro algunos ejemplos de cómo puedes usar la propiedad `.classList` en JavaScript:
+
+1. Agregar una clase CSS a un elemento:
+
+```js
+const myElement = document.querySelector('.my-element');
+myElement.classList.add('my-class');
+```
+
+En este ejemplo, se selecciona un elemento con la clase `.my-element` y se le agrega la clase CSS `.my-class` utilizando el método `.add()` de la propiedad `.classList`.
+
+2. Eliminar una clase CSS de un elemento:
+
+```js
+const myElement = document.querySelector('.my-element');
+myElement.classList.remove('my-class');
+```
+
+En este ejemplo, se selecciona un elemento con la clase `.my-element` y se le elimina la clase CSS `.my-class` utilizando el método `.remove()` de la propiedad `.classList`.
+
+3. Verificar si un elemento tiene una clase CSS:
+
+```js
+const myElement = document.querySelector('.my-element');
+if (myElement.classList.contains('my-class')) {
+  // El elemento tiene la clase CSS .my-class
+}
+```
+
+En este ejemplo, se selecciona un elemento con la clase `.my-element` y se verifica si tiene la clase CSS `.my-class` utilizando el método `.contains()` de la propiedad `.classList`.
+
+4. Alternar una clase CSS en un elemento:
+
+```js
+const myElement = document.querySelector('.my-element');
+myElement.classList.toggle('my-class');
+```
+
+En este ejemplo, se selecciona un elemento con la clase `.my-element` y se alterna la clase CSS `.my-class` utilizando el método `.toggle()` de la propiedad `.classList`. Si el elemento ya tiene la clase CSS, se la quita; si no la tiene, se la agrega.
+
+Estos son solo algunos ejemplos de cómo puedes usar la propiedad `.classList` en JavaScript. Hay otros métodos disponibles, como `.replace()` y `.item()`, que también pueden ser útiles en diferentes situaciones.
+
+## `left: calc(50% - 50px);`  Menos la mitad del width
+
+La función `calc()` en CSS te permite realizar operaciones matemáticas simples en tus valores de estilo. Esto puede ser útil para establecer propiedades como el ancho, la altura, el margen o el padding, y realizar cálculos basados en porcentajes, pixeles, ems y otras unidades de medida.
+
+La sintaxis básica de `calc()` es la siguiente:
+
+```css
+propiedad: calc(expresión);
+```
+
+Donde `propiedad` es la propiedad CSS que deseas establecer y `expresión` es la operación matemática que deseas realizar.
+
+Por ejemplo, si quisieras establecer el ancho de un elemento en el 50% del ancho de su contenedor menos 20 píxeles, podrías hacerlo de la siguiente manera:
+
+```css
+width: calc(50% - 20px);
+```
+
+Del mismo modo, si quisieras establecer el padding de un elemento en el 10% de su ancho más 5 píxeles, podrías hacerlo de esta manera:
+
+```css
+padding: calc(10% + 5px);
+```
+
+También puedes utilizar `calc()` para combinar diferentes unidades de medida. Por ejemplo, si quisieras establecer la altura de un elemento en el 30% del ancho de su contenedor más 50 ems, podrías hacerlo de esta manera:
+
+```css
+height: calc(30% + 50em);
+```
+
+Puedes utilizar `calc()` en cualquier propiedad CSS que acepte valores numéricos, como `width`, `height`, `margin`, `padding`, `font-size`, entre otras.
+
+Espero que esto te ayude a comprender cómo utilizar la función `calc()` en CSS.
+
+## `display: none;`
+
+La propiedad CSS que es opuesta a `display: none;` es `display: block;`, que hace que el elemento sea visible y tenga un tamaño de bloque, es decir, ocupa todo el ancho disponible y comienza en una nueva línea.
+
+`display: none;` oculta completamente el elemento y elimina su espacio en la página, mientras que `display: block;` hace que el elemento sea visible y ocupa un espacio en la página.
+
+Sin embargo, ten en cuenta que `display: block;` solo es la propiedad opuesta en el caso de elementos que son de nivel de bloque (`<div>`, `<p>`, `<h1>`, etc.) o que se han convertido en elementos de nivel de bloque utilizando otras propiedades CSS como `display: flex;` o `display: grid;`. Para elementos de nivel de línea (`<span>`, `<a>`, etc.), la propiedad opuesta a `display: none;` es `display: inline;`.
+
+En resumen, si deseas mostrar un elemento que ha sido ocultado con `display: none;`, debes cambiar su propiedad `display` a `block` o `inline`, según sea el caso.
+
+## `position: absolute;`
+
+Lo contrario es `position: static;`
+
+## Recargar una página
+
+Para recargar una página usando JavaScript, puedes utilizar la función `location.reload()`.
+
+Esta función recarga la página actual con todas las solicitudes de red y los recursos necesarios cargados nuevamente. Asegúrate de llamar a esta función en el contexto adecuado, por ejemplo, dentro de un evento de click de un botón. 
+
+Aquí te dejo un ejemplo de cómo podrías usar la función `location.reload()`:
+
+```html
+<button onclick="reloadPage()">Recargar página</button>
+```
+
+```js
+function reloadPage() {
+  location.reload();
+}
+```
+
+En este ejemplo, cuando se hace clic en el botón, se llama a la función `reloadPage()` que a su vez llama a la función `location.reload()`, recargando así la página.

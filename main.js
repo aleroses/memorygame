@@ -9,11 +9,13 @@
 // 7. De no ser iguales ocultar tarjetas con setTimeout y decirle que las dos tarjetas esten en disabled = false, además debemos volver el contador en cero. 
 // 8. Verificar si los aciertos son igual a 8 y mostrar el tiempo usado
 // 9. Agregar temporizador de 30 segundos y al perder mostrar todas los numeros de las tarjetas
+// 10. Agregar botón de reset game
 
 let cards = document.getElementById('cards');
 let p_movements = document.getElementById('movements');
 let p_successful_attempts = document.getElementById('successful-attempts');
 let p_time_left = document.getElementById('time-left') ;
+let b_reset = document.querySelector('.visible');
 
 let card;
 let index;
@@ -36,6 +38,7 @@ let random = numbers.toSorted(() => Math.random() - 0.5);
 console.log(random);
 
 cards.addEventListener('click', find_index);
+b_reset.addEventListener('click', reset_game);
 
 function find_index(event){
     if(event.target.tagName == 'BUTTON'){
@@ -79,6 +82,8 @@ function show_card(index){
                 p_successful_attempts.innerText = `Successful attempts: ${successful_attempts} 😱`;
                 p_time_left.innerText = `Great, you only took ${initial_time - time} seconds 😄`
                 p_movements.innerText = `Movements: ${movements} 😎`;
+
+                b_reset.classList.toggle('visible');
             }
         }else{
             setTimeout(() => {
@@ -102,6 +107,10 @@ function measure_time(){ // Medir el tiempo
         if(time == 0){
             clearInterval(time_controller);
             show_and_lock_card();
+
+            setTimeout(() => {
+                b_reset.classList.toggle('visible');
+            }, 200)
         }
     }, 1000);
 }
@@ -112,6 +121,10 @@ function show_and_lock_card(){ // Muestra y bloquea tarjetas
         block_card.innerText = random[i];
         block_card.disabled = true;
     }
+}
+
+function reset_game(){
+    location.reload();
 }
 
 /* 

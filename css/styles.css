@@ -45,10 +45,10 @@ header{
     align-self: center;
     background-color: rgba(255, 255, 255, 0.2);
 }
-div{
+/* div{
     
     list-style: none;
-}
+} */
 .card{
     width: 100%;
     height: 100%;
@@ -71,11 +71,11 @@ div{
     border-radius: 8px;
     background-color: rgba(255, 255, 255,0.2);
 }
-.statistics{
+/* .statistics{
     border: 1px solid white;
     border-radius: 8px;
     padding: 5px 5px;
-}
+} */
 footer{
     display: flex;
     width: 90vw;
@@ -88,4 +88,23 @@ footer{
 a{
     text-decoration: none;
     color: aqua;
+}
+.visible{
+    display: none;
+}
+.play-again {
+    position: absolute;
+    width: 100px;
+    top: 35vh;
+    left: calc(50% - 50px); /* Menos la mitar del with */
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    border-radius: 8px;
+    border: 1px solid white;
+    margin: 0;
+    padding: 5px 20px;
+    
+    color: white;
+}
+.play-again:hover{
+    cursor: pointer;
 }
