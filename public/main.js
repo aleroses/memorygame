@@ -14,7 +14,7 @@
 let cards = document.getElementById('cards');
 let p_movements = document.getElementById('movements');
 let p_successful_attempts = document.getElementById('successful-attempts');
-let p_time_left = document.getElementById('time-left') ;
+let p_time_left = document.getElementById('time-left');
 let b_reset = document.querySelector('.visible');
 
 let card;
@@ -29,9 +29,9 @@ let block_card;
 let card_counter = 0;
 let movements = 0;
 let successful_attempts = 0;
-let time = 30;
+let time = 5;
 let timer = false;
-let initial_time = 30;
+let initial_time = 5;
 
 let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
 let random = numbers.toSorted(() => Math.random() - 0.5);
@@ -127,8 +127,8 @@ function reset_game(){
     location.reload();
 }
 
-/* 
-let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+
+/* let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
 let random = numbers.sort(() => Math.random() - 0.5);
 console.log(random);
 
@@ -151,7 +151,7 @@ let successful_attempts = 0;
 
 let timer = false;
 let time = 30;
-let initial_time = 30
+let initial_time = 30;
 let time_identifier;
 
 cards.addEventListener('click', find_index);
@@ -240,5 +240,4 @@ function uncovered(index){
             }, 800)
         }
     }
-} 
-*/
+}  */
