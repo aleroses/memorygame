@@ -17,227 +17,135 @@ let p_successful_attempts = document.getElementById('successful-attempts');
 let p_time_left = document.getElementById('time-left');
 let b_reset = document.querySelector('.visible');
 
+let win_audio = new Audio('./sound/win.wav');
+let lose_audio = new Audio('./sound/lose.wav');
+let clic_audio = new Audio('./sound/clic.wav');
+let right_audio = new Audio('./sound/right.wav');
+let wrong_audio = new Audio('./sound/wrong.wav');
+
+let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+let random = numbers.toSorted(() => Math.random() - 0.5);
+console.log(random);
+
 let card;
 let index;
 let card_one;
 let card_two;
 let first_result;
 let second_result;
+let time_left;
 let time_controller;
 let block_card;
 
 let card_counter = 0;
 let movements = 0;
 let successful_attempts = 0;
-let time = 5;
+let time = 30;
+let total_time = 30;
 let timer = false;
-let initial_time = 5;
-
-let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
-let random = numbers.toSorted(() => Math.random() - 0.5);
-console.log(random);
 
 cards.addEventListener('click', find_index);
 b_reset.addEventListener('click', reset_game);
 
-function find_index(event){
-    if(event.target.tagName == 'BUTTON'){
+function find_index(event) {
+    if (event.target.tagName == 'BUTTON') {
         card = document.getElementsByTagName('div');
-        index = Array.prototype.indexOf.call(card, event.target.parentNode)
+        index = Array.prototype.indexOf.call(card, event.target.parentNode);
     }
     show_card(index);
 }
 
-function show_card(index){
-    if(timer == false){
+function show_card(index) {
+    if (timer == false) {
         measure_time();
         timer = true;
     }
 
     card_counter++;
-    if(card_counter == 1){
+
+    if (card_counter == 1) {
         card_one = document.getElementById(index);
         first_result = random[index]
-        
-        card_one.innerText = first_result;
+        card_one.innerHTML = `<img src="./image/${first_result}.png" alt="">`;
+
+        clic_audio.play();
+
         card_one.disabled = true;
-    }else if(card_counter == 2){
+    } else if (card_counter == 2) {
         card_two = document.getElementById(index);
         second_result = random[index];
+        card_two.innerHTML = `<img src="./image/${second_result}.png" alt="">`;
 
-        card_two.innerText = second_result;
         card_two.disabled = true;
 
         movements++;
         p_movements.innerText = `Movements: ${movements}`;
 
-        if(first_result == second_result){
+        if (first_result == second_result) {
             card_counter = 0;
 
             successful_attempts++;
             p_successful_attempts.innerText = `Successful attempts: ${successful_attempts}`;
 
-            if(successful_attempts == 8){
+            right_audio.play();
+
+            if (successful_attempts == 8) {
                 clearInterval(time_controller);
+                win_audio.play();
+
                 p_successful_attempts.innerText = `Successful attempts: ${successful_attempts} 😱`;
-                p_time_left.innerText = `Great, you only took ${initial_time - time} seconds 😄`
+                p_time_left.innerText = `Great, you only took ${total_time - time} seconds 😄`;
                 p_movements.innerText = `Movements: ${movements} 😎`;
 
                 b_reset.classList.toggle('visible');
             }
-        }else{
-            setTimeout(() => {
-                card_counter = 0;
+        } else {
+            wrong_audio.play();
 
-                card_one.innerText = ' ';
-                card_two.innerText = ' ';
-                card_one.disabled = false;
-                card_two.disabled = false;
-            }, 800);
+            setTimeout(() => {
+                if (time > 0) {
+                    card_counter = 0;
+
+                    card_one.innerText = ' ';
+                    card_two.innerText = ' ';
+                    card_one.disabled = false;
+                    card_two.disabled = false;
+                }
+            }, 800)
+
+            /* if(time == 0){
+                show_and_lock_card();
+            } */
         }
     }
+
     console.log(card_counter);
 }
 
-function measure_time(){ // Medir el tiempo
+function measure_time() {
     time_controller = setInterval(() => {
         time--;
         p_time_left.innerText = `Time: ${time} seconds`
 
-        if(time == 0){
+        if (time <= 0) {
+            b_reset.classList.toggle('visible')
             clearInterval(time_controller);
             show_and_lock_card();
 
-            setTimeout(() => {
-                b_reset.classList.toggle('visible');
-            }, 200)
+            lose_audio.play();
         }
+
     }, 1000);
 }
 
-function show_and_lock_card(){ // Muestra y bloquea tarjetas
-    for(let i=0; i<=15; i++){
+function show_and_lock_card() {
+    for (let i = 0; i <= 15; i++) {
         block_card = document.getElementById(i);
-        block_card.innerText = random[i];
+        block_card.innerHTML = `<img src="./image/${random[i]}.png" alt="">`;
         block_card.disabled = true;
     }
 }
 
-function reset_game(){
+function reset_game() {
     location.reload();
 }
-
-
-/* let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
-let random = numbers.sort(() => Math.random() - 0.5);
-console.log(random);
-
-let cards = document.getElementById('cards');
-let p_movements = document.getElementById('movements');
-let p_successful_attempts = document.getElementById('successful-attempts');
-let p_time_left = document.getElementById('time-left');
-
-let card;
-let index;
-
-let uncovered_cards = 0;
-let card_one = undefined;
-let card_two = undefined;
-let first_result = undefined;
-let second_result = undefined;
-
-let movements = 0;
-let successful_attempts = 0;
-
-let timer = false;
-let time = 30;
-let initial_time = 30;
-let time_identifier;
-
-cards.addEventListener('click', find_index);
-
-function find_index(event){
-    // Al hacer clic arroja todas las propiedades dispinibles de ese event
-    // entre ellas target que muestra la etiqueta button#0.card
-    // dentro de target tambien podemos ver tagName:"BUTTON"
-    if(event.target.tagName === 'BUTTON'){
-        card = document.getElementsByTagName('div')
-        index = Array.prototype.indexOf.call(card, event.target.parentNode);
-
-        console.log('Index', index);
-        uncovered(index);
-    }
-}
-
-function count_time(){
-    time_identifier = setInterval(() => {
-        time--;
-        p_time_left.innerText = `Time: ${time} seconds`
-
-        if(time == 0){
-            clearInterval(time_identifier);
-            block_cards();
-        }
-    }, 1000);
-}
-
-function block_cards(){
-    for(let i=0; i<=15; i++){
-        let block_card = document.getElementById(i);
-        block_card.innerText = random[i];
-        block_card.disabled = true;
-    }
-}
-
-function uncovered(index){
-    if(timer == false){
-        count_time();
-        timer = true;
-    }
-
-    uncovered_cards++;
-
-    if(uncovered_cards == 1){
-        // Mostrar primer número
-        card_one = document.getElementById(index);
-        first_result = random[index];
-        card_one.innerText = first_result;
-
-        card_one.disabled = true;
-    }else if(uncovered_cards == 2){
-        card_two = document.getElementById(index);
-        second_result = random[index];
-        card_two.innerText = second_result;
-
-        card_two.disabled = true;
-
-        // Cada vez que destapamos 2 tarjetas es 1 movimiento
-        movements++;
-        p_movements.innerText = `Movements: ${movements}`;
-
-        if(first_result == second_result){
-            // uncovered_cards volver a 0
-            uncovered_cards = 0;
-
-            // Incrementamos aciertos 
-            successful_attempts++;
-            p_successful_attempts.innerText = `Successful attempts: ${successful_attempts}`;
-
-            if(successful_attempts == 8){
-                clearInterval(time)
-                p_successful_attempts.innerText = `Successful attempts: ${successful_attempts} 😱`;
-                p_time_left.innerText = `Great, you only took ${initial_time - time} seconds`
-                p_movements.innerText = `Movements: ${movements} 😎`;
-            }
-        }else{
-            // Mostrar valores de las cards y volver a tapar
-            setTimeout(() => {
-                card_one.innerText = ' ';
-                card_two.innerText = ' ';
-                card_one.disabled = false;
-                card_two.disabled = false;
-                uncovered_cards = 0;
-            }, 800)
-        }
-    }
-}  */

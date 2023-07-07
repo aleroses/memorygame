@@ -7,11 +7,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'ubuntu', sans-serif;
 }
 body{
-    background: rgb(63,94,251);
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    /* background: rgb(63,94,251); */
+    /* background: radial-gradient(circle, rgba(63,94,251.1) 0%, rgba(252,70,107) 100%); */
+    background: linear-gradient(180deg, #000000 0%, #191970 100%);
     color: white;
 }
 
@@ -22,11 +23,11 @@ body{
     height: 85vh;
 
     grid-template-columns: 1fr;
-    grid-template-rows: 0.8fr 4fr 2.4fr;
+    grid-template-rows: 1fr 5fr 1fr;
     margin: 0 auto;
     margin-top: 5vh;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255,255, 0.05);
     border-radius: 8px;
 }
 header{
@@ -55,13 +56,13 @@ header{
     font-size: 40px;
     font-weight: bold;
     color: white;
-}
-.card:hover{
     cursor: pointer;
 }
+/* .card:hover{
+} */
 .side-container{
     display: grid;
-    width: 76vw;
+    width: 76vh;
     height: 25vh;
     max-width: 260px;
     font-size: var(--lg);
@@ -69,7 +70,7 @@ header{
     align-items: center;
     padding: 5px 5px 5px;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255,0.2);
+    background-color: rgba(255, 255, 255, alpha);
 }
 /* .statistics{
     border: 1px solid white;
@@ -83,7 +84,6 @@ footer{
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    font-size: var(--sm);
 }
 a{
     text-decoration: none;
@@ -92,19 +92,23 @@ a{
 .visible{
     display: none;
 }
-.play-again {
+.play-again{
     position: absolute;
     width: 100px;
     top: 35vh;
-    left: calc(50% - 50px); /* Menos la mitar del with */
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    left: calc(50% - 50px);
+    /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
+    background: linear-gradient(180deg, #000000 0%, #191970 100%);
     border-radius: 8px;
-    border: 1px solid white;
+    border: 1px solid gray;
     margin: 0;
     padding: 5px 20px;
-    
     color: white;
-}
-.play-again:hover{
     cursor: pointer;
+}
+/* .play-again:hover{
+} */
+img{
+    width: 65%;
+    
 }
